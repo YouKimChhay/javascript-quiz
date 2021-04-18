@@ -1,33 +1,34 @@
-[
-    {
-        "question": "Inside which HTML element do we put the JavaScript?",
-        "answer": [
-            "<script>",
-            "<js>",
-            "<scripting",
-            "<javascript>"
-        ],
-        "correct": 0
-    },
-
-    {
-        "question": "What is the correct JavaScript syntax to change the content of this HTML element? <p id='demo'>This is a demonstration.</p>",
-        "answer": [
-            "document.getElementById('demo').innerHTML = 'Hello world!';",
-            "document.getElementbyName('p').innerHTML = 'Hello World!';",
-            "#demo.innerHTML = 'Hello World!';",
-            "document.getElement('p').innerHTML = 'Hello World!';"
-        ],
-        "correct": 0
-    },
-
-    {
-        "question": "Where is the correct place to insert a Javascript?",
-        "answer": [
-            "The <body> section",
-            "The <head> section",
-            "Both the <head> and <body> section are correct"
-        ],
-        "correct": 2
-    }
-]
+{
+    "quiz":
+    [
+        {
+            "question": "Inside which HTML element do we put the JavaScript?",
+            "answer": [
+                "<script>",
+                "<js>",
+                "<scripting",
+                "<javascript>"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "What is the correct JavaScript syntax to change the content of this HTML element? <p id='demo'>This is a demonstration.</p>",
+            "answer": [
+                "document.getElementById('demo').innerHTML = 'Hello world!';",
+                "document.getElementbyName('p').innerHTML = 'Hello World!';",
+                "#demo.innerHTML = 'Hello World!';",
+                "document.getElement('p').innerHTML = 'Hello World!';"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Where is the correct place to insert a Javascript?",
+            "answer": [
+                "The <body> section",
+                "The <head> section",
+                "Both the <head> and <body> section are correct"
+            ],
+            "correct": 2
+        }
+    ]
+}

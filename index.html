@@ -5,25 +5,31 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Javascript Quiz</title>
+
         <link rel="stylesheet" href="./assets/css/style.css" />
+        <script src="./assets/files/quiz1.json" type="application/json" defer></script>
+        <script src="./assets/js/main.js" type="module" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
     </head>
 
     <body>
-        <header id="header">
+        <header id="header"></header>
+
+        <main id="main"></main>
+
+        <!-- template -->
+        <script id="header-template" type="text/x-handlebars-template">
             <p><a href="#">View High Score</a></p>
-            <p id="timer">Timer: 300</p>
-        </header>
+            <p id="timer">Timer: {{timer}}</p>
+        </script>
 
-        <main id="main">
-            <p id="question">Inside which HTML element do we put the JavaScript?</p>
+        <script id="main-template" type="text/x-handlebars-template">
+            <p id="question">{{question}}</p>
             <ul id="answer">
-                <li>&lt;script&gt;</li>
-                <li>&lt;js&gt;</li>
-                <li>&lt;scripting&gt;</li>
-                <li>&lt;javascript&gt;</li>
+                {{#each answer}}
+                    <li>{{this}}</li>
+                {{/each}}
             </ul>
-        </main>
-
-        <script src="./assets/js/script.js"></script>
+        </script>
     </body>
 </html>
