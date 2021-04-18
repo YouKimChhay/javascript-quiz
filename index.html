@@ -31,5 +31,31 @@
                 {{/each}}
             </ul>
         </script>
+
+        <script id="main-finish-template" type="text/x-handlebars-template">
+            <p>All done!</p>
+            <p>Your final score is {{score}}.</p>
+            <div id="store-score-form">
+                <label for="initial">Enter Your Initial:</label>
+                <input type="text" id="initial" placeholder="Your Initial" />
+                <button type="submit" id="initial-submit-btn" class="btn">Submit</button>
+            </div>
+            <div id="error-message">
+                <p>{{error}}</p>
+            </div>
+        </script>
+
+        <script id="high-score-template" type="text/x-handlebars-template">
+            <h2>High Scores</h2>
+            <ol id="score-list">
+                {{#each scores}}
+                    <li class="score-list-item">{{this.initial}} - {{this.score}}</li>
+                {{/each}}
+            </ol>
+            <div id="buttons">
+                <button type="submit" id="go-back-btn" class="btn">Go Back</button>
+                <button type="submit" id="clear-high-score-btn" class="btn">Clear High Score</button>
+            </div>
+        </script>
     </body>
 </html>

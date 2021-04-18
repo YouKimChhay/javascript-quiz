@@ -14,6 +14,17 @@ export function main_view(quiz) {
         "question": quiz.question,
         "answer": quiz.answer,
     }
-    console.log(quiz.answer);
     apply_template("main", "main-template", data);
+}
+
+export function main_finish_view(score, error) {
+    var data = {
+        "score": score,
+        "error": error
+    }
+    apply_template("main", "main-finish-template", data);
+}
+
+export function high_score_view(scores) {
+    apply_template("main", "high-score-template", {"scores": scores});
 }

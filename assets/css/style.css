@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
 }
 
@@ -61,6 +62,39 @@ body {
 #answer li:hover {
     cursor: pointer;
     background-color: rgb(127, 255, 212, 1);
+}
+
+#store-score-form {
+    margin: 10px auto;
+}
+
+.btn {
+    margin-left: 10px;
+    background-color: rgb(127, 255, 212, 1);
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.btn:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+#error-message {
+    color: red;
+}
+
+#score-list li {
+    background-color: rgba(218, 221, 220, 0.7);
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+#buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
 }
 
 @media screen and (max-width: 800px) {
