@@ -13,49 +13,80 @@
     </head>
 
     <body>
-        <header id="header"></header>
-
-        <main id="main"></main>
+        <div id="content"></div>
 
         <!-- template -->
-        <script id="header-template" type="text/x-handlebars-template">
-            <p><a href="#">View High Score</a></p>
-            <p id="timer">Timer: {{timer}}</p>
+        <script id="home-template" type="text/x-handlebars-template">
+            <header id="header">
+                <p><a href="#" id="view-high-score-link">View High Score</a></p>
+            </header>
+            <main id="main">
+                <h2>JavaScript Quiz</h2>
+                <h3>The Quiz</h3>
+                <p>Each quiz contains {{numberOfQuestions}} questions and a time limit of 300s (5mins).</p>
+                <p>
+                    Each quiz, adapted from <a href="https://www.w3schools.com/js/js_quiz.asp">W3Schools,</a>
+                    can be used to test your JavaScript skill.
+                </p>
+                <h3>Scoring</h3>
+                <p>Each correct answer gives you 1 score.</p>
+                <p>The remaining time gives you 1 score for every second.</p>
+                <p>Total score is the addition of both scores.</p>
+                <p>You can record your score after finish the quiz.</p>
+                <div class="buttons">
+                    <button type="submit" id="start-quiz1-btn" class="btn">Start Quiz 1</button>
+                    <button type="submit" id="start-quiz2-btn" class="btn">Start Quiz 2</button>
+                    <button type="submit" id="start-quiz3-btn" class="btn">Start Quiz 3</button>
+                </div>
+            </main>
         </script>
 
-        <script id="main-template" type="text/x-handlebars-template">
-            <p id="question">{{question}}</p>
-            <ul id="answer">
-                {{#each answer}}
-                    <li id="{{@index}}">{{this}}</li>
-                {{/each}}
-            </ul>
+        <script id="quiz-template" type="text/x-handlebars-template">
+            <header id="header">
+                <p><a href="#" id="view-high-score-link">View High Score</a></p>
+                <p id="timer">Timer: {{timer}}</p>
+            </header>
+            <main id="main">
+                <p id="question">{{question}}</p>
+                <ul id="answer">
+                    {{#each answer}}
+                        <li id="{{@index}}">{{this}}</li>
+                    {{/each}}
+                </ul>
+            </main>
         </script>
 
-        <script id="main-finish-template" type="text/x-handlebars-template">
-            <p>All done!</p>
-            <p>Your final score is {{score}}.</p>
-            <div id="store-score-form">
-                <label for="initial">Enter Your Initial:</label>
-                <input type="text" id="initial" placeholder="Your Initial" />
-                <button type="submit" id="initial-submit-btn" class="btn">Submit</button>
-            </div>
-            <div id="error-message">
-                <p>{{error}}</p>
-            </div>
+        <script id="finish-template" type="text/x-handlebars-template">
+            <header id="header">
+                <p><a href="#" id="view-high-score-link">View High Score</a></p>
+            </header>
+            <main id="main">
+                <p>All done!</p>
+                <p>Your final score is {{score}}.</p>
+                <div id="store-score-form">
+                    <label for="initial">Enter Your Initial:</label>
+                    <input type="text" id="initial" placeholder="Your Initial" />
+                    <button type="submit" id="initial-submit-btn" class="btn">Submit</button>
+                </div>
+                <div id="error-message">
+                    <p>{{error}}</p>
+                </div>
+            </main>
         </script>
 
         <script id="high-score-template" type="text/x-handlebars-template">
-            <h2>High Scores</h2>
-            <ol id="score-list">
-                {{#each scores}}
-                    <li class="score-list-item">{{this.initial}} - {{this.score}}</li>
-                {{/each}}
-            </ol>
-            <div id="buttons">
-                <button type="submit" id="go-back-btn" class="btn">Go Back</button>
-                <button type="submit" id="clear-high-score-btn" class="btn">Clear High Score</button>
-            </div>
+            <main id="main">
+                <h2>High Scores</h2>
+                <ol id="score-list">
+                    {{#each scores}}
+                        <li class="score-list-item">{{this.initial}} - {{this.score}}</li>
+                    {{/each}}
+                </ol>
+                <div class="buttons">
+                    <button type="submit" id="go-back-btn" class="btn">Go Back</button>
+                    <button type="submit" id="clear-high-score-btn" class="btn">Clear High Score</button>
+                </div>
+            </main>
         </script>
     </body>
 </html>

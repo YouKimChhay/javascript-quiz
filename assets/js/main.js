@@ -31,9 +31,9 @@ function loadPage() {
     //     console.log(quiz[i]);
     // }
 
-    view.header_view(300);
+    view.home_view(20);
     // view.main_view(quiz[currentQuestion]);
-    view.main_finish_view(currentScore, "");
+    // view.finish_view(currentScore, "");
 
     // var score = {
     //     "initial": "CYK",
@@ -51,6 +51,11 @@ function loadPage() {
 }
 
 function actionHandler() {
+    var viewHighScoreLink = document.getElementById("view-high-score-link");
+    if (viewHighScoreLink) {
+        viewHighScoreLink.addEventListener("click", viewHighScoreHandler);
+    }
+
     var mainE = document.getElementById("main");
     if (mainE) {
         mainE.addEventListener("click", clickAnswerHandler);
@@ -72,6 +77,10 @@ function actionHandler() {
     }
 }
 
+function viewHighScoreHandler(event) {
+    view.high_score_view(scores);
+}
+
 function clickAnswerHandler(event) {
     var quiz = Model.get_quiz();
     var target = event.target;
@@ -87,7 +96,7 @@ function clickAnswerHandler(event) {
 
         // not a last question
         if (currentQuestion < quiz.length) {
-            view.main_view(quiz[currentQuestion]);
+            view.quiz_view(quiz[currentQuestion]);
         } else {
             view.main_finish_view(currentScore);
             console.log("score = " + currentScore);
@@ -102,7 +111,7 @@ function submitScoreHandler(event) {
 
     var initialInput = document.getElementById("initial").value;
     if (!initialInput) {
-        view.main_finish_view(currentScore, "Enter your initial above!");
+        view.finish_view(currentScore, "Enter your initial above!");
         // console.log("error");
         return false;
     }
@@ -120,6 +129,7 @@ function submitScoreHandler(event) {
 
 function goBackHandler(event) {
     console.log("go back to the main page")
+    view.home_view(30);
 }
 
 function clearScoreHandler(event) {
@@ -127,6 +137,8 @@ function clearScoreHandler(event) {
     clearScore();
 
     console.log("go back to the main page");
+
+    view.home_view(30);
 }
 
 function saveScore() {

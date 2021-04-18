@@ -8,6 +8,16 @@ body {
     margin: 30px;
 }
 
+#main p a {
+    color: blue;
+    text-decoration: none;
+}
+
+#main p a:hover {
+    color: blue;
+    text-decoration: underline;
+}
+
 #header {
     display: flex;
     flex-wrap: wrap;
@@ -91,7 +101,7 @@ body {
     margin-bottom: 10px;
 }
 
-#buttons {
+.buttons {
     display: flex;
     justify-content: space-around;
     margin-top: 40px;
