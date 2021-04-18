@@ -27,7 +27,7 @@
             <p id="question">{{question}}</p>
             <ul id="answer">
                 {{#each answer}}
-                    <li>{{this}}</li>
+                    <li id="{{@index}}">{{this}}</li>
                 {{/each}}
             </ul>
         </script>

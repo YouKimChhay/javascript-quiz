@@ -12,7 +12,8 @@ export function header_view(timer) {
 export function main_view(quiz) {
     var data = {
         "question": quiz.question,
-        "answer": quiz.answer
+        "answer": quiz.answer,
     }
+    console.log(quiz.answer);
     apply_template("main", "main-template", data);
 }
