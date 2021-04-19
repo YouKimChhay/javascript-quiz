@@ -33,6 +33,16 @@ function actionHandler() {
         startQuiz1Btn.addEventListener("click", startQuiz1Handler);
     }
 
+    var startQuiz2Btn = document.getElementById("start-quiz2-btn");
+    if (startQuiz2Btn) {
+        startQuiz2Btn.addEventListener("click", startQuiz2Handler);
+    }
+
+    var startQuiz3Btn = document.getElementById("start-quiz3-btn");
+    if (startQuiz3Btn) {
+        startQuiz3Btn.addEventListener("click", startQuiz3Handler);
+    }
+
     var viewHighScoreLink = document.getElementById("view-high-score-link");
     if (viewHighScoreLink) {
         viewHighScoreLink.addEventListener("click", viewHighScoreHandler);
@@ -59,13 +69,23 @@ function actionHandler() {
     }
 }
 
-function startQuizHandler(quizN) {
-    // view.quizView(300, Model.get_quiz1())
+function startQuizHandler(quiz) {
+    view.quizView(300, quiz[currentQuestion]);
 }
 
 function startQuiz1Handler(event) {
     var quiz = Model.getQuiz1();
-    view.quizView(300, quiz[currentQuestion]);
+    startQuizHandler(quiz);
+}
+
+function startQuiz2Handler(event) {
+    var quiz = Model.getQuiz2();
+    startQuizHandler(quiz);
+}
+
+function startQuiz3Handler(event) {
+    var quiz = Model.getQuiz3();
+    startQuizHandler(quiz);
 }
 
 function viewHighScoreHandler(event) {
