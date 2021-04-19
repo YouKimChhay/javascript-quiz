@@ -1,0 +1,104 @@
+{
+    "quiz": [
+        {
+            "question": "How do you prompt users with messages and at the same time requesting user inputs?",
+            "answer": [
+                "alert()",
+                "display()",
+                "prompt()",
+                "confirm()"
+            ],
+            "correct": "3"
+        },
+        {
+            "question": "Which of the following is the minimum browser version that supports JavaScript?",
+            "answer": [
+                "Navigator v2.0",
+                "Mozilla V1.5",
+                "IE 2.0",
+                "Navigator V1.0"
+            ],
+            "correct": "0"
+        },
+        {
+            "question": "With the DATE object, which of the following allows you to call a function based on an elapsed time?",
+            "answer": [
+                "setElapsedTime()",
+                "Timeout()",
+                "setTimeout()",
+                "setTime()"
+            ],
+            "correct": "3"
+        },
+        {
+            "question": "You want to design a form validation mechanism. Using String methods, which of the following are the steps involved?",
+            "answer": [
+                "Check for the presence of certain characters",
+                "Check the position of substrings",
+                "Test the length of data",
+                "All of the above"
+            ],
+            "correct": "3"
+        },
+        {
+            "question": "Which of the following correctly describe the relationship of JavaScript and 'objects'?",
+            "answer": [
+                "JavaScript is Object-oriented",
+                "JavaScript is Object-based",
+                "JavaScript is Object-driven",
+                "JavaScript has no relationship with objects"
+            ],
+            "correct": "1"
+        },
+        {
+            "question": "Which of the following do you use for a multi-way branch?",
+            "answer": [
+                "if",
+                "if then",
+                "if else",
+                "switch"
+            ],
+            "correct": "3"
+        },
+        {
+            "question": "What is used to restart the inner most loop?",
+            "answer": [
+                "abort",
+                "breakloop",
+                "stop",
+                "continue label"
+            ],
+            "correct": "3"
+        },
+        {
+            "question": "Which of the following is the correct syntax of FOR?",
+            "answer": [
+                "for (increment; initialize; test)",
+                "for (initialize; test; increment)",
+                "for (test; initialize; incremenet)",
+                "for (test; increment; initialize)"
+            ],
+            "correct": "1"
+        },
+        {
+            "question": "How do you find out which character occurs at the 5th position in a string 'How are you'?",
+            "answer": [
+                "substring()",
+                "string()",
+                "stringLength()",
+                "charAt()"
+            ],
+            "correct": "3"
+        },
+        {
+            "question": "Which of the following are the advantages of using JavaScript for form validation?",
+            "answer": [
+                "increase end-user satisfaction",
+                "increase validity of form submission",
+                "conservation of bandwidth",
+                "all of the above"
+            ],
+            "correct": "3"
+        }
+    ]
+}
