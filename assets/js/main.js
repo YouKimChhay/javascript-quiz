@@ -24,30 +24,7 @@ window.addEventListener("click", function() {
 
 // load the page
 function loadPage() {
-
-    // var quiz = Model.get_quiz();
-    // console.log(quiz);
-    // for (var i = 0; i < quiz.length; i++) {
-    //     console.log(quiz[i]);
-    // }
-
     view.homeView(20);
-    // view.main_view(quiz[currentQuestion]);
-    // view.finish_view(currentScore, "");
-
-    // var score = {
-    //     "initial": "CYK",
-    //     "score": currentScore
-    // }
-    // scores.push(score);
-    // var score = {
-    //     "initial": "CYK",
-    //     "score": 60
-    // }
-    // scores.push(score);
-    // view.high_score_view(scores);
-
-    // actionHandler();
 }
 
 function actionHandler() {
@@ -88,7 +65,6 @@ function startQuizHandler(quizN) {
 
 function startQuiz1Handler(event) {
     var quiz = Model.getQuiz1();
-    console.log(quiz);
     view.quizView(300, quiz[currentQuestion]);
 }
 
@@ -96,6 +72,7 @@ function viewHighScoreHandler(event) {
     view.highScoreView(scores);
 }
 
+// need to be fixed
 function clickAnswerHandler(event) {
     var quiz = Model.getQuiz1();
     var target = event.target;
@@ -114,23 +91,18 @@ function clickAnswerHandler(event) {
             view.quizView(300, quiz[currentQuestion]);
         } else {
             view.finishView(currentScore, "");
-            console.log("score = " + currentScore);
-            console.log("finish!");
         }
     }
 }
 
 function submitScoreHandler(event) {
-    // console.log("submit score");
-    // console.log(event);
-
     var initialInput = document.getElementById("initial").value;
+    
+    // no input
     if (!initialInput) {
         view.finishView(currentScore, "Enter your initial above!");
-        // console.log("error");
         return false;
     }
-    // console.log(initialInput);
 
     var score = {
         "initial": initialInput,
@@ -138,23 +110,19 @@ function submitScoreHandler(event) {
     }
     scores.push(score);
     saveScore();
+    reset();
 
     view.highScoreView(scores);
 }
 
 function goBackHandler(event) {
-    console.log("go back to the main page")
     reset();
     view.homeView(30);
 }
 
 function clearScoreHandler(event) {
-    console.log("clear score");
     reset();
     clearScore();
-
-    console.log("go back to the main page");
-
     view.homeView(30);
 }
 
