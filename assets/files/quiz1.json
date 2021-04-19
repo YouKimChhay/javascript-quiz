@@ -28,6 +28,209 @@
                 "Both the <head> and <body> section are correct"
             ],
             "correct": "2"
+        },
+        {
+            "question": "What is the correct syntax for referring to an external script called 'xxx.js'?",
+            "answer": [
+                "<script src='xxx.js'>",
+                "<script name='xxx.js'>",
+                "<script href='xxx.js'>"
+            ],
+            "correct": "0"
+        },
+        {
+            "question": "The external JavaScript file must contain the <script> tag.",
+            "answer": [
+                "False",
+                "True"
+            ],
+            "correct": "0"
+        },
+        {
+            "question": "How do you write 'Hello World' in an alert box?",
+            "answer": [
+                "alertBox('Hello World');",
+                "alert('Hello World');",
+                "msgBox('Hello World');",
+                "msg('Hello World');"
+            ],
+            "correct": "1"
+        },
+        {
+            "question": "How do you create a function in JavaScript?",
+            "answer": [
+                "function myFunction()",
+                "function = myFunction()",
+                "function:myFunction()"
+            ],
+            "correct": "0"
+        },
+        {
+            "question": "How do you call a function named 'myFunction'?",
+            "answer": [
+                "myFunction()",
+                "call function myFunction()",
+                "call myFunction()"
+            ],
+            "correct": "0"
+        },
+        {
+            "question": "How to write an IF statement in JavaScript?",
+            "answer": [
+                "if (i == 5)",
+                "if i = 5",
+                "if i = 5 then"
+            ],
+            "correct": "0"
+        },
+        {
+            "question": "How to write an IF statement for executing some code if 'i' is NOT equal to 5?",
+            "answer": [
+                "if (i != 5)",
+                "if i <> 5",
+                "if (i <> 5)",
+                "if i =! 5 then"
+            ],
+            "correct": "0"
+        },
+        {
+            "question": "How does a WHILE loop start?",
+            "answer": [
+                "while (i <= 10)",
+                "while (i <= 10; i++)",
+                "while i = 1 to 10"
+            ],
+            "correct": "0"
+        },
+        {
+            "question": "How does a FOR loop start?",
+            "answer": [
+                "for (i = 0; i <= 5; i++)",
+                "for (i = 0; i <= 5)",
+                "for (i <= 5; i++)",
+                "for i = 1 to 5"
+            ],
+            "correct": "0"
+        },
+        {
+            "question": "How can you add a comment in a JavaScript?",
+            "answer": [
+                "//This is a comment",
+                "<!--This is a comment-->",
+                "'This is a comment"
+            ],
+            "correct": "0"
+        },
+        {
+            "question": "What is another way to comment in JavaScript?",
+            "answer": [
+                "/*This comment has more than one line*/",
+                "<!--This comment has more than one line-->",
+                "//This comment has more than one line//"
+            ],
+            "correct": "0"
+        },
+        {
+            "question": "What is the correct way to write a JavaScript array?",
+            "answer": [
+                "var colors = ['red', 'green', 'blue']",
+                "var colors = (1:'red', 2:'green', 3:'blue')",
+                "var colors = 'red', 'green', 'blue'",
+                "var colors = 1 = ('red'), 2 = ('green'), 3 = ('blue')"
+            ],
+            "correct": "0"
+        },
+        {
+            "question": "How do you round the number 7.25, to the nearest integer?",
+            "answer": [
+                "Math.round(7.25)",
+                "round(7.25)",
+                "rnd(7.25)",
+                "Math.rnd(7.25)"
+            ],
+            "correct": "0"
+        },
+        {
+            "question": "How do you find the number with the highest value of x and y?",
+            "answer": [
+                "Math.ceil(x, y)",
+                "Math.max(x, y)",
+                "ceil(x, y)",
+                "top(x, y)"
+            ],
+            "correct": "1"
+        },
+        {
+            "question": "What is the correct JavaScript syntax for opening a new window called 'w2'?",
+            "answer": [
+                "w2 = window.open('http://www.example.com')",
+                "w2 = window.new('http://www.example.com')"
+            ],
+            "correct": "0"
+        },
+        {
+            "question": "JavaScript is the same as Java.",
+            "answer": [
+                "False",
+                "True"
+            ],
+            "correct": "0"
+        },
+        {
+            "question": "How can you detect the client's browser name?",
+            "answer": [
+                "browser.name",
+                "navigator.appName",
+                "nav.appName",
+                "client.navName"
+            ],
+            "correct": "1"
+        },
+        {
+            "question": "Which event occurs when the user clicks on an HTML element?",
+            "answer": [
+                "onclick",
+                "onchange",
+                "onmouseover",
+                "onmouseclick"
+            ],
+            "correct": "0"
+        },
+        {
+            "question": "How do you declare a JavaScript variable?",
+            "answer": [
+                "var carName;",
+                "v carName;",
+                "variable carName;"
+            ],
+            "correct": "0"
+        },
+        {
+            "question": "Which operator is used to assign a value to a variable?",
+            "answer": [
+                "-",
+                "=",
+                "x",
+                "*"
+            ],
+            "correct": "1"
+        },
+        {
+            "question": "What will the following code return: Boolean(10 > 9)?",
+            "answer": [
+                "true",
+                "NaN",
+                "false"
+            ],
+            "correct": "0"
+        },
+        {
+            "question": "Is JavaScript case-sensitive?",
+            "answer": [
+                "Yes",
+                "No"
+            ],
+            "correct": "0"
         }
     ]
 }
