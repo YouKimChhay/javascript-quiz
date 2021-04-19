@@ -1,0 +1,104 @@
+{
+    "quiz": [
+        {
+            "question": "Which of the following is a disadvantage of using JavaScript?",
+            "answer": [
+                "Client-side JavaScript does not allow the reading or writing of files.",
+                "JavaScript can not be used for Networking applications because there is no such support available.",
+                "JavaScript doesn't have any multithreading or multiprocess capabilities.",
+                "All of the above."
+            ],
+            "correct": "3"
+        },
+        {
+            "question": "Which of the following is the correct syntax to create a cookie using JavaScript?",
+            "answer": [
+                "document.cookie = 'key1 = value1; key2 = value2; expires = date';",
+                "browser.cookie = 'key1 = value1; key2 = value2; expires = date';",
+                "window.cookie = 'key1 = value1; key2 = value2; expires = date';",
+                "navigator.cookie = 'key1 = value1; key2 = value2; expires = date';"
+            ],
+            "correct": "0"
+        },
+        {
+            "question": "Which of the following type of variable is visible only with a function where it is defined?",
+            "answer": [
+                "global variable",
+                "local variable",
+                "Both of the above",
+                "None of the above"
+            ],
+            "correct": "1"
+        },
+        {
+            "question": "Which built-in method returns the characters in a string beginning at the specified location?",
+            "answer": [
+                "substr()",
+                "getSubstring()",
+                "slice()",
+                "None of the above"
+            ],
+            "correct": "0"
+        },
+        {
+            "question": "Which of the following function of Number object returns the number's value?",
+            "answer": [
+                "toString()",
+                "valueOf()",
+                "toLocaleString()",
+                "toPrecision()"
+            ],
+            "correct": "1"
+        },
+        {
+            "question": "Which of the following function of String object returns a number indicating whether a reference string comes before or after or is the same as the given string in sort order?",
+            "answer": [
+                "localeCompare()",
+                "search()",
+                "substr()",
+                "concat"
+            ],
+            "correct": "0"
+        },
+        {
+            "question": "Which of the following function of String object returns the calling string value converted to upper case?",
+            "answer": [
+                "toLocaleUpperCase()",
+                "toUpperCase()",
+                "toString()",
+                "substring()"
+            ],
+            "correct": "1"
+        },
+        {
+            "question": "Which of the following function of String object causes a string to be italic, as if it were in an <i> tag?",
+            "answer": [
+                "fixed()",
+                "fontcolor()",
+                "fontsize()",
+                "italics()"
+            ],
+            "correct": "3"
+        },
+        {
+            "question": "Which of the following function of Array object adds one or more eleements to the end of an array and returns the new length of the array?",
+            "answer": [
+                "pop()",
+                "push()",
+                "join()",
+                "map()"
+            ],
+            "correct": "1"
+        },
+        {
+            "question": "Which of the following function of Array object adds one or more elements to the front of an array and returns the new length of the array?",
+            "answer": [
+                "unshift()",
+                "sort()",
+                "spice()",
+                "toString()"
+            ],
+            "correct": "0"
+        }
+    ]
+}
