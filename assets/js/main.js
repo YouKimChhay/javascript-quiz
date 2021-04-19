@@ -8,7 +8,7 @@ var scores = [];
 
 // when window starts to load
 window.onload = function() {
-    Model.get_data();
+    Model.getData();
     loadScore();
 }
 
@@ -25,7 +25,7 @@ window.addEventListener("click", function() {
 // load the page
 function loadPage() {
 
-    var quiz = Model.get_quiz();
+    // var quiz = Model.get_quiz();
     // console.log(quiz);
     // for (var i = 0; i < quiz.length; i++) {
     //     console.log(quiz[i]);
@@ -47,10 +47,15 @@ function loadPage() {
     // scores.push(score);
     // view.high_score_view(scores);
 
-    actionHandler();
+    // actionHandler();
 }
 
 function actionHandler() {
+    var startQuiz1Btn = document.getElementById("start-quiz1-btn");
+    if (startQuiz1Btn) {
+        startQuiz1Btn.addEventListener("click", startQuiz1Handler);
+    }
+
     var viewHighScoreLink = document.getElementById("view-high-score-link");
     if (viewHighScoreLink) {
         viewHighScoreLink.addEventListener("click", viewHighScoreHandler);
@@ -77,12 +82,22 @@ function actionHandler() {
     }
 }
 
+function startQuizHandler(quizN) {
+    view.quiz_view(300, Model.get_quiz1())
+}
+
+function startQuiz1Handler(event) {
+    var quiz = Model.getQuiz1();
+    console.log(quiz);
+    view.quiz_view(300, quiz[currentQuestion]);
+}
+
 function viewHighScoreHandler(event) {
     view.high_score_view(scores);
 }
 
 function clickAnswerHandler(event) {
-    var quiz = Model.get_quiz();
+    var quiz = Model.getQuiz1();
     var target = event.target;
     
     if (target.closest("li")) {
@@ -96,9 +111,9 @@ function clickAnswerHandler(event) {
 
         // not a last question
         if (currentQuestion < quiz.length) {
-            view.quiz_view(quiz[currentQuestion]);
+            view.quiz_view(300, quiz[currentQuestion]);
         } else {
-            view.main_finish_view(currentScore);
+            view.finish_view(currentScore, "");
             console.log("score = " + currentScore);
             console.log("finish!");
         }
@@ -129,16 +144,23 @@ function submitScoreHandler(event) {
 
 function goBackHandler(event) {
     console.log("go back to the main page")
+    reset();
     view.home_view(30);
 }
 
 function clearScoreHandler(event) {
     console.log("clear score");
+    reset();
     clearScore();
 
     console.log("go back to the main page");
 
     view.home_view(30);
+}
+
+function reset() {
+    currentQuestion = 0;
+    currentScore = 0;
 }
 
 function saveScore() {

@@ -2,25 +2,50 @@ export {Model};
 
 const Model = {
 
-    quiz1_file: './assets/files/quiz1.json',
-    quiz: [],
+    quiz1File: './assets/files/quiz1.json',
+    quiz2File: './assets/files/quiz2.json',
+    quiz1: [],
+    quiz2: [],
 
-    get_data: function() {
-        fetch(this.quiz1_file)
+    getData: function() {
+        this.getData1();
+    },
+
+    getData1: function() {
+        fetch(this.quiz1File)
         .then(response => response.json())
         .then(
             data => {
-                this.set_quiz(data);
+                this.setQuiz1(data);
                 window.dispatchEvent(new CustomEvent("modelUpdated", {detail: this}));
             }
         );
     },
 
-    set_quiz: function(data) {
-        this.quiz = data.quiz;
+    getData2: function() {
+        fetch(this.quiz2File)
+        .then(response => response.json())
+        .then(
+            data => {
+                this.setQuiz2(data);
+                window.dispatchEvent(new CustomEvent("modelUpdated", {detail: this}));
+            }
+        );
     },
 
-    get_quiz: function() {
-        return this.quiz;
+    setQuiz1: function(data) {
+        this.quiz1 = data.quiz;
+    },
+
+    setQuiz2: function(data) {
+        this.quiz2 = data.quiz;
+    },
+
+    getQuiz1: function() {
+        return this.quiz1;
+    },
+
+    getQuiz2: function() {
+        return this.quiz2;
     }
 }
