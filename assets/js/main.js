@@ -28,9 +28,7 @@ window.addEventListener("modelUpdated3", function() {
 })
 
 // when user click on anything
-window.addEventListener("click", function() {
-    actionHandler();
-})
+window.addEventListener("click", actionHandler)
 
 // load the page
 function loadPage(quiz, index) {
@@ -39,45 +37,39 @@ function loadPage(quiz, index) {
     quizzes.splice(index, 0, quiz);
 }
 
-function actionHandler() {
-    var startQuiz1Btn = document.getElementById("start-quiz1-btn");
-    if (startQuiz1Btn) {
-        startQuiz1Btn.addEventListener("click", startQuiz1Handler);
+function actionHandler(event) {
+    var target = event.target;
+
+    if (target.closest("#start-quiz1-btn")) {
+        startQuiz1Handler(event);
     }
 
-    var startQuiz2Btn = document.getElementById("start-quiz2-btn");
-    if (startQuiz2Btn) {
-        startQuiz2Btn.addEventListener("click", startQuiz2Handler);
+    if (target.closest("#start-quiz2-btn")) {
+        startQuiz2Handler(event);
     }
 
-    var startQuiz3Btn = document.getElementById("start-quiz3-btn");
-    if (startQuiz3Btn) {
-        startQuiz3Btn.addEventListener("click", startQuiz3Handler);
+    if (target.closest("#start-quiz3-btn")) {
+        startQuiz3Handler(event);
     }
 
-    var viewHighScoreLink = document.getElementById("view-high-score-link");
-    if (viewHighScoreLink) {
-        viewHighScoreLink.addEventListener("click", viewHighScoreHandler);
+    if (target.closest("#view-high-score-link")) {
+        viewHighScoreHandler(event);
     }
 
-    var mainE = document.getElementById("main");
-    if (mainE) {
-        mainE.addEventListener("click", clickAnswerHandler);
+    if (target.closest("#main")) {
+        clickAnswerHandler(event);
+    }
+    
+    if (target.closest("#initial-submit-btn")) {
+        submitScoreHandler(event);
     }
 
-    var initialSubmitBtn = document.getElementById("initial-submit-btn");
-    if (initialSubmitBtn) {
-        initialSubmitBtn.addEventListener("click", submitScoreHandler);
+    if (target.closest("#go-back-btn")) {
+        goBackHandler(event);
     }
 
-    var goBackBtn = document.getElementById("go-back-btn");
-    if (goBackBtn) {
-        goBackBtn.addEventListener("click", goBackHandler);
-    }
-
-    var clearScoreBtn = document.getElementById("clear-high-score-btn");
-    if (clearScoreBtn) {
-        clearScoreBtn.addEventListener("click", clearScoreHandler);
+    if (target.closest("#clear-high-score-btn")) {
+        clearScoreHandler(event);
     }
 }
 
@@ -105,7 +97,6 @@ function viewHighScoreHandler(event) {
     view.highScoreView(scores);
 }
 
-// need to be fixed
 function clickAnswerHandler(event) {
     var quiz = quizzes[0];
 
