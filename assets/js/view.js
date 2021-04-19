@@ -5,8 +5,8 @@ function applyTemplate(elementId, templateId, data) {
     document.getElementById(elementId).innerHTML = template(data);
 }
 
-export function homeView(numberOfQuestions) {
-    applyTemplate("content", "home-template", {"numberOfQuestions": numberOfQuestions});
+export function homeView() {
+    applyTemplate("content", "home-template");
 }
 
 export function quizView(timer, quiz) {

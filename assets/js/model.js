@@ -22,7 +22,7 @@ const Model = {
         .then(
             data => {
                 this.setQuiz1(data);
-                window.dispatchEvent(new CustomEvent("modelUpdated", {detail: this}));
+                window.dispatchEvent(new CustomEvent("modelUpdated1", {detail: this}));
             }
         );
     },
@@ -33,7 +33,7 @@ const Model = {
         .then(
             data => {
                 this.setQuiz2(data);
-                window.dispatchEvent(new CustomEvent("modelUpdated", {detail: this}));
+                window.dispatchEvent(new CustomEvent("modelUpdated2", {detail: this}));
             }
         );
     },
@@ -44,7 +44,7 @@ const Model = {
         .then(
             data => {
                 this.setQuiz3(data);
-                window.dispatchEvent(new CustomEvent("modelUpdated", {detail: this}));
+                window.dispatchEvent(new CustomEvent("modelUpdated3", {detail: this}));
             }
         );
     },

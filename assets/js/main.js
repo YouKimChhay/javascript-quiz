@@ -2,6 +2,8 @@ import { Model } from "./model.js";
 import * as view from "./view.js";
 
 
+var quizzes = []; //array of quiz
+var currentQuiz = 1; //assume current quiz is quiz1
 var currentQuestion = 0;
 var currentScore = 0;
 var scores = [];
@@ -13,8 +15,16 @@ window.onload = function() {
 }
 
 // after json files read successfully
-window.addEventListener("modelUpdated", function() {
-    loadPage();
+window.addEventListener("modelUpdated1", function() {
+    loadPage(Model.getQuiz1(), 0);
+})
+
+window.addEventListener("modelUpdated2", function() {
+    loadPage(Model.getQuiz2(), 1);
+})
+
+window.addEventListener("modelUpdated3", function() {
+    loadPage(Model.getQuiz3(), 2);
 })
 
 // when user click on anything
@@ -23,8 +33,10 @@ window.addEventListener("click", function() {
 })
 
 // load the page
-function loadPage() {
-    view.homeView(20);
+function loadPage(quiz, index) {
+    view.homeView();
+    shuffleQuestions(quiz);
+    quizzes.splice(index, 0, quiz);
 }
 
 function actionHandler() {
@@ -74,18 +86,18 @@ function startQuizHandler(quiz) {
 }
 
 function startQuiz1Handler(event) {
-    var quiz = Model.getQuiz1();
-    startQuizHandler(quiz);
+    currentQuiz = 1;
+    startQuizHandler(quizzes[0]);
 }
 
 function startQuiz2Handler(event) {
-    var quiz = Model.getQuiz2();
-    startQuizHandler(quiz);
+    currentQuiz = 2;
+    startQuizHandler(quizzes[1]);
 }
 
 function startQuiz3Handler(event) {
-    var quiz = Model.getQuiz3();
-    startQuizHandler(quiz);
+    currentQuiz = 3;
+    startQuizHandler(quizzes[2]);
 }
 
 function viewHighScoreHandler(event) {
@@ -95,7 +107,14 @@ function viewHighScoreHandler(event) {
 
 // need to be fixed
 function clickAnswerHandler(event) {
-    var quiz = Model.getQuiz1();
+    var quiz = quizzes[0];
+
+    if (currentQuiz === 2) {
+        quiz = quizzes[1];
+    } else if (currentQuiz === 3) {
+        quiz = quizzes[2];
+    }
+
     var target = event.target;
     
     if (target.closest(".ans")) {
@@ -151,10 +170,19 @@ function clearScoreHandler(event) {
 function reset() {
     currentQuestion = 0;
     currentScore = 0;
+
+    // re-shuffle the questions of each quiz
+    for (var i = 0; i < quizzes.length; i++) {
+        shuffleQuestions(quizzes[i]);
+    }
 }
 
 function decreaseOrderScore() {
     scores.sort((x, y) => y.score - x.score);
+}
+
+function shuffleQuestions(quiz) {
+    quiz.sort(() => Math.random() - 0.5);
 }
 
 function saveScore() {
