@@ -69,6 +69,7 @@ function startQuiz1Handler(event) {
 }
 
 function viewHighScoreHandler(event) {
+    scores.sort((x, y) => y.score - x.score);
     view.highScoreView(scores);
 }
 
@@ -108,7 +109,8 @@ function submitScoreHandler(event) {
         "initial": initialInput,
         "score": currentScore
     }
-    scores.push(score);
+    scores.unshift(score);
+    scores.sort((x, y) => y.score - x.score);
     saveScore();
     reset();
 
