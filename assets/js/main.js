@@ -31,7 +31,7 @@ function loadPage() {
     //     console.log(quiz[i]);
     // }
 
-    view.home_view(20);
+    view.homeView(20);
     // view.main_view(quiz[currentQuestion]);
     // view.finish_view(currentScore, "");
 
@@ -83,17 +83,17 @@ function actionHandler() {
 }
 
 function startQuizHandler(quizN) {
-    view.quiz_view(300, Model.get_quiz1())
+    // view.quizView(300, Model.get_quiz1())
 }
 
 function startQuiz1Handler(event) {
     var quiz = Model.getQuiz1();
     console.log(quiz);
-    view.quiz_view(300, quiz[currentQuestion]);
+    view.quizView(300, quiz[currentQuestion]);
 }
 
 function viewHighScoreHandler(event) {
-    view.high_score_view(scores);
+    view.highScoreView(scores);
 }
 
 function clickAnswerHandler(event) {
@@ -111,9 +111,9 @@ function clickAnswerHandler(event) {
 
         // not a last question
         if (currentQuestion < quiz.length) {
-            view.quiz_view(300, quiz[currentQuestion]);
+            view.quizView(300, quiz[currentQuestion]);
         } else {
-            view.finish_view(currentScore, "");
+            view.finishView(currentScore, "");
             console.log("score = " + currentScore);
             console.log("finish!");
         }
@@ -126,7 +126,7 @@ function submitScoreHandler(event) {
 
     var initialInput = document.getElementById("initial").value;
     if (!initialInput) {
-        view.finish_view(currentScore, "Enter your initial above!");
+        view.finishView(currentScore, "Enter your initial above!");
         // console.log("error");
         return false;
     }
@@ -139,13 +139,13 @@ function submitScoreHandler(event) {
     scores.push(score);
     saveScore();
 
-    view.high_score_view(scores);
+    view.highScoreView(scores);
 }
 
 function goBackHandler(event) {
     console.log("go back to the main page")
     reset();
-    view.home_view(30);
+    view.homeView(30);
 }
 
 function clearScoreHandler(event) {
@@ -155,7 +155,7 @@ function clearScoreHandler(event) {
 
     console.log("go back to the main page");
 
-    view.home_view(30);
+    view.homeView(30);
 }
 
 function reset() {

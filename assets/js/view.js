@@ -1,31 +1,31 @@
 
 
-function apply_template(elementId, templateId, data) {
+function applyTemplate(elementId, templateId, data) {
     const template = Handlebars.compile(document.getElementById(templateId).textContent);
     document.getElementById(elementId).innerHTML = template(data);
 }
 
-export function home_view(numberOfQuestions) {
-    apply_template("content", "home-template", {"numberOfQuestions": numberOfQuestions});
+export function homeView(numberOfQuestions) {
+    applyTemplate("content", "home-template", {"numberOfQuestions": numberOfQuestions});
 }
 
-export function quiz_view(timer, quiz) {
+export function quizView(timer, quiz) {
     var data = {
         "timer": timer,
         "question": quiz.question,
         "answer": quiz.answer,
     }
-    apply_template("content", "quiz-template", data);
+    applyTemplate("content", "quiz-template", data);
 }
 
-export function finish_view(score, error) {
+export function finishView(score, error) {
     var data = {
         "score": score,
         "error": error
     }
-    apply_template("content", "finish-template", data);
+    applyTemplate("content", "finish-template", data);
 }
 
-export function high_score_view(scores) {
-    apply_template("content", "high-score-template", {"scores": scores});
+export function highScoreView(scores) {
+    applyTemplate("content", "high-score-template", {"scores": scores});
 }
