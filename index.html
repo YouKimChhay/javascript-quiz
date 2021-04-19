@@ -11,6 +11,7 @@
         <script src="./assets/files/quiz2.json" type="application/json" defer></script>
         <script src="./assets/files/quiz3.json" type="application/json" defer></script>
         <script src="./assets/js/main.js" type="module" defer></script>
+        <script src="./assets/js/util.js" type="module" defer></script>
         <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
     </head>
 
@@ -88,9 +89,9 @@
         <script id="high-score-template" type="text/x-handlebars-template">
             <main id="main">
                 <h2>High Scores</h2>
-                <ol id="score-list">
+                <ul id="score-list">
                     {{#each scores}}
-                        <li class="score-list-item">{{this.initial}} - {{this.score}}</li>
+                        <li class="score-list-item score-list{{this.quiz}}">Quiz {{this.quiz}}: {{this.initial}} - {{this.score}}</li>
                     {{/each}}
                 </ol>
                 <div class="buttons">

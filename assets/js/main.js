@@ -3,7 +3,7 @@ import * as view from "./view.js";
 
 
 var quizzes = []; //array of quiz
-var currentQuiz = 1; //assume current quiz is quiz1
+var currentQuiz = 0; //assume current quiz is quiz1
 var currentQuestion = 0;
 var currentScore = 0;
 var scores = [];
@@ -78,31 +78,31 @@ function startQuizHandler(quiz) {
 }
 
 function startQuiz1Handler(event) {
-    currentQuiz = 1;
+    currentQuiz = 0;
     startQuizHandler(quizzes[0]);
 }
 
 function startQuiz2Handler(event) {
-    currentQuiz = 2;
+    currentQuiz = 1;
     startQuizHandler(quizzes[1]);
 }
 
 function startQuiz3Handler(event) {
-    currentQuiz = 3;
+    currentQuiz = 2;
     startQuizHandler(quizzes[2]);
 }
 
 function viewHighScoreHandler(event) {
-    decreaseOrderScore();
+    orderScore();
     view.highScoreView(scores);
 }
 
 function clickAnswerHandler(event) {
     var quiz = quizzes[0];
 
-    if (currentQuiz === 2) {
+    if (currentQuiz === 1) {
         quiz = quizzes[1];
-    } else if (currentQuiz === 3) {
+    } else if (currentQuiz === 2) {
         quiz = quizzes[2];
     }
 
@@ -137,10 +137,12 @@ function submitScoreHandler(event) {
 
     var score = {
         "initial": initialInput,
-        "score": currentScore
+        "score": currentScore,
+        "quiz": currentQuiz + 1
     }
+    // scores[currentQuiz].unshift(scores);
     scores.unshift(score);
-    decreaseOrderScore()
+    orderScore()
     saveScore();
     reset();
 
@@ -168,9 +170,21 @@ function reset() {
     }
 }
 
-function decreaseOrderScore() {
+/**
+ * 1. sort scores decreasingly
+ * 2. group scores based on quiz set
+ */
+function orderScore() {
     scores.sort((x, y) => y.score - x.score);
+    scores.sort((x, y) => x.quiz - y.quiz);
 }
+
+// function scoreOfQuizArray() {
+//     var quizScores = [];
+//     for (var i = 0; i < scores.length; i++) {
+//         if (scores[i].quiz )
+//     }
+// }
 
 function shuffleQuestions(quiz) {
     quiz.sort(() => Math.random() - 0.5);

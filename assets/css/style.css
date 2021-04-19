@@ -96,6 +96,11 @@ body {
     color: red;
 }
 
+#score-list {
+    list-style: none;
+    padding: 0;
+}
+
 #score-list li {
     background-color: rgba(218, 221, 220, 0.7);
     padding: 5px;
