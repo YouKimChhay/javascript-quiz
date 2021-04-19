@@ -89,7 +89,7 @@ function startQuiz3Handler(event) {
 }
 
 function viewHighScoreHandler(event) {
-    scores.sort((x, y) => y.score - x.score);
+    decreaseOrderScore();
     view.highScoreView(scores);
 }
 
@@ -98,7 +98,7 @@ function clickAnswerHandler(event) {
     var quiz = Model.getQuiz1();
     var target = event.target;
     
-    if (target.closest("li")) {
+    if (target.closest(".ans")) {
         // correct answer was selected => increment score
         if (quiz[currentQuestion].correct === target.id) {
             currentScore++;
@@ -130,7 +130,7 @@ function submitScoreHandler(event) {
         "score": currentScore
     }
     scores.unshift(score);
-    scores.sort((x, y) => y.score - x.score);
+    decreaseOrderScore()
     saveScore();
     reset();
 
@@ -151,6 +151,10 @@ function clearScoreHandler(event) {
 function reset() {
     currentQuestion = 0;
     currentScore = 0;
+}
+
+function decreaseOrderScore() {
+    scores.sort((x, y) => y.score - x.score);
 }
 
 function saveScore() {
