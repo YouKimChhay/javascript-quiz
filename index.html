@@ -11,13 +11,15 @@
         <script src="./assets/files/quiz2.json" type="application/json" defer></script>
         <script src="./assets/files/quiz3.json" type="application/json" defer></script>
         <script src="./assets/js/main.js" type="module" defer></script>
-        <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script> <!-- refer to https://handlebarsjs.com/ -->
     </head>
 
     <body>
         <div id="content"></div>
 
-        <!-- template -->
+        <!-- templates start-->
+
+        <!-- home template -->
         <script id="home-template" type="text/x-handlebars-template">
             <header id="header">
                 <p><a href="#" id="view-high-score-link">View High Score</a></p>
@@ -29,7 +31,7 @@
                     It can be used to test your JavaScript skill.</p>
                 <p>
                     Quiz 1 has 10 questions and a time limit of 200s. <br/>
-                    The quiz is adapted from <a href="https://www.javatpoint.com/javascript-quiz">JavaPoint</a>.
+                    The quiz is adapted from <a href="https://www.javatpoint.com/javascript-quiz">JavaTPoint</a>.
                 </p>
                 <p>
                     Quiz 2 has 10 questions and a time limit of 200s. <br/>
@@ -51,6 +53,7 @@
             </main>
         </script>
 
+        <!-- quiz template -->
         <script id="quiz-template" type="text/x-handlebars-template">
             <header id="header">
                 <p><a href="#" id="view-high-score-link">View High Score</a></p>
@@ -66,6 +69,7 @@
             </main>
         </script>
 
+        <!-- finish and record score template -->
         <script id="finish-template" type="text/x-handlebars-template">
             <header id="header">
                 <p><a href="#" id="view-high-score-link">View High Score</a></p>
@@ -85,6 +89,7 @@
             </main>
         </script>
 
+        <!-- high score template -->
         <script id="high-score-template" type="text/x-handlebars-template">
             <main id="main">
                 <h2>High Scores</h2>
@@ -103,5 +108,8 @@
                 </div>
             </main>
         </script>
+
+        <!-- templates end-->
+
     </body>
 </html>

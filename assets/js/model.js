@@ -1,5 +1,12 @@
 export {Model};
 
+/**
+ * Model class to support JavaScript Quiz application.
+ * This class provides an interface to the web API and
+ * a local store of data that the application can refer to.
+ * The API generates an event for each quiz file updated.
+ * eg. "modelUpdated1" event when quiz1File has been retrieved.
+ */
 const Model = {
 
     quiz1File: './assets/files/quiz1.json',
@@ -10,12 +17,14 @@ const Model = {
     quiz3: [],
 
 
+    // get all of the 3 file
     getData: function() {
         this.getData1();
         this.getData2();
         this.getData3();
     },
 
+    // get data from quiz1File
     getData1: function() {
         fetch(this.quiz1File)
         .then(response => response.json())
@@ -27,6 +36,7 @@ const Model = {
         );
     },
 
+    // get data from quiz2File
     getData2: function() {
         fetch(this.quiz2File)
         .then(response => response.json())
@@ -38,6 +48,7 @@ const Model = {
         );
     },
 
+    // get data from quiz3File
     getData3: function() {
         fetch(this.quiz3File)
         .then(response => response.json())
@@ -49,6 +60,7 @@ const Model = {
         );
     },
 
+    // setters
     setQuiz1: function(data) {
         this.quiz1 = data.quiz;
     },
@@ -61,6 +73,7 @@ const Model = {
         this.quiz3 = data.quiz;
     },
 
+    // getters
     getQuiz1: function() {
         return this.quiz1;
     },

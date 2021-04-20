@@ -1,7 +1,13 @@
+/**
+ * Controller in MVC to support JavaScript Quiz application.
+ */
+
+
 import { Model } from "./model.js";
 import * as view from "./view.js";
 
 
+// global variables
 var timer = 0;
 var countDown;
 var quizzes = []; //array of quiz
@@ -10,18 +16,21 @@ var currentQuestion = 0;
 var currentScore = 0;
 var scores = [];
 
-// var countDown = setInterval(function() {
-//     timer--;
-//     view.quizView(timer)
-// });
 
-// when window starts to load
+/**
+ * When window starts to load:
+ * - get/fetch the data
+ * - load list of score from localStorage if any
+ */
 window.onload = function() {
     Model.getData();
     loadScore();
 }
 
-// after json files read successfully
+/**
+ * After json files read successfully:
+ * - get each quiz and store in global variable quizzes
+ */
 window.addEventListener("modelUpdated1", function() {
     loadPage(Model.getQuiz1(), 0);
 })
@@ -37,13 +46,20 @@ window.addEventListener("modelUpdated3", function() {
 // when user click on anything
 window.addEventListener("click", actionHandler)
 
-// load the page
+/**
+ * load the page by:
+ * - view the homepage
+ * - get the quiz set, shuffle the questions and store in quizzes
+ */
 function loadPage(quiz, index) {
     view.homeView();
     shuffleQuestions(quiz);
     quizzes.splice(index, 0, quiz);
 }
 
+/**
+ * handle 'click' event when user clicks on something
+ */
 function actionHandler(event) {
     var target = event.target;
 
@@ -80,61 +96,63 @@ function actionHandler(event) {
     }
 }
 
+/**
+ * helper function for handling start quiz buttons click.
+ * quiz - which quiz set to start
+ * start count down the time
+ * the quiz finish when no time remained
+ */
 function startQuizHandler(quiz) {
     countDown = setInterval(function() {
         timer--;
         view.quizView(timer, quiz[currentQuestion]);
         if (timer <= 0) {
-            console.log("finish");
             timer = 0;
             clearInterval(countDown)
             view.finishView(currentScore, quiz.length, timer, "");
-            console.log("??");
         }
     }, 1000);
     
 }
 
+// when start quiz 1 button is clicked
 function startQuiz1Handler(event) {
     timer = 201;
     currentQuiz = 0;
     startQuizHandler(quizzes[0]);
 }
 
+// when start quiz 2 button is clicked
 function startQuiz2Handler(event) {
     timer = 201;
     currentQuiz = 1;
     startQuizHandler(quizzes[1]);
 }
 
+// when start quiz 3 button is clicked
 function startQuiz3Handler(event) {
     timer = 301;
     currentQuiz = 2;
     startQuizHandler(quizzes[2]);
 }
 
+// view the list of high score
 function viewHighScoreHandler(event) {
     clearInterval(countDown);
     orderScore();
     view.highScoreView(scores);
 }
 
+// when the user answer the question
 function clickAnswerHandler(event) {
-    var quiz = quizzes[0];
-
-    if (currentQuiz === 1) {
-        quiz = quizzes[1];
-    } else if (currentQuiz === 2) {
-        quiz = quizzes[2];
-    }
-
+    var quiz = quizzes[currentQuiz];
     var target = event.target;
     
     if (target.closest(".ans")) {
         // correct answer was selected => increment score
         if (quiz[currentQuestion].correct === target.id) {
             currentScore++;
-        } else {
+        } else { // otherwise lost 10 seconds
             timer -= 10;
             if (timer <= 0) {
                 timer = 0;
@@ -144,16 +162,17 @@ function clickAnswerHandler(event) {
         // next question
         currentQuestion++;
 
-        // not a last question
+        // not a last question -> view next question
         if (currentQuestion < quiz.length) {
             view.quizView(timer, quiz[currentQuestion]);
-        } else {
+        } else { // otherwise finish
             clearInterval(countDown);
             view.finishView(currentScore, quiz.length, timer, "");
         }
     }
 }
 
+// finish and record score
 function submitScoreHandler(event) {
     var initialInput = document.getElementById("initial").value;
     
@@ -169,26 +188,38 @@ function submitScoreHandler(event) {
         "score": currentScore,
         "quiz": currentQuiz + 1
     }
-    // scores[currentQuiz].unshift(scores);
-    scores.unshift(score);
+    scores.unshift(score); // at to the beginning of the array
     orderScore()
     saveScore();
     reset();
 
+    // record score successfully -> view the list of high score
     view.highScoreView(scores);
 }
 
+/**
+ * go back button is clicked:
+ * - reset global variables
+ * - go back to homepage
+ */
 function goBackHandler(event) {
     reset();
     view.homeView();
 }
 
+/**
+ * clear high score is clicked:
+ * - reset the globale variables
+ * - clear local storage
+ * - go back to homepage
+ */
 function clearScoreHandler(event) {
     reset();
     clearScore();
     view.homeView();
 }
 
+// reset the global variables
 function reset() {
     currentQuestion = 0;
     currentScore = 0;
@@ -200,6 +231,7 @@ function reset() {
 }
 
 /**
+ * Order of the list of high score:
  * 1. sort scores decreasingly
  * 2. group scores based on quiz set
  */
@@ -208,14 +240,17 @@ function orderScore() {
     scores.sort((x, y) => x.quiz - y.quiz);
 }
 
+// shuffle the questions within the quiz set
 function shuffleQuestions(quiz) {
     quiz.sort(() => Math.random() - 0.5);
 }
 
+// save the score to localStorage
 function saveScore() {
     localStorage.setItem("scores", JSON.stringify(scores));
 }
 
+// load the score from localStorage
 function loadScore() {
     // get scores from local storage
     scores = localStorage.getItem("scores");
@@ -228,6 +263,7 @@ function loadScore() {
     scores = JSON.parse(scores);
 }
 
+// clear localStorage
 function clearScore() {
     localStorage.clear();
     scores = [];
