@@ -1,6 +1,6 @@
 # JavaScript Quiz Application
 
-Last Modified: 20 April 2021
+Last Modified: 20 April 2021  
 Author: You Kim Chhay
 
 ## General Information about the application
