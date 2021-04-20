@@ -179,13 +179,6 @@ function orderScore() {
     scores.sort((x, y) => x.quiz - y.quiz);
 }
 
-// function scoreOfQuizArray() {
-//     var quizScores = [];
-//     for (var i = 0; i < scores.length; i++) {
-//         if (scores[i].quiz )
-//     }
-// }
-
 function shuffleQuestions(quiz) {
     quiz.sort(() => Math.random() - 0.5);
 }
