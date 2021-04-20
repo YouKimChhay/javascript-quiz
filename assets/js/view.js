@@ -18,9 +18,11 @@ export function quizView(timer, quiz) {
     applyTemplate("content", "quiz-template", data);
 }
 
-export function finishView(score, error) {
+export function finishView(score, nQuestions, timer, error) {
     var data = {
         "score": score,
+        "nQuestions": nQuestions,
+        "timer": timer,
         "error": error
     }
     applyTemplate("content", "finish-template", data);

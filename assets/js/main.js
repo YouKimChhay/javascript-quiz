@@ -2,11 +2,18 @@ import { Model } from "./model.js";
 import * as view from "./view.js";
 
 
+var timer = 0;
+var countDown;
 var quizzes = []; //array of quiz
 var currentQuiz = 0; //assume current quiz is quiz1
 var currentQuestion = 0;
 var currentScore = 0;
 var scores = [];
+
+// var countDown = setInterval(function() {
+//     timer--;
+//     view.quizView(timer)
+// });
 
 // when window starts to load
 window.onload = function() {
@@ -74,25 +81,40 @@ function actionHandler(event) {
 }
 
 function startQuizHandler(quiz) {
-    view.quizView(300, quiz[currentQuestion]);
+    countDown = setInterval(function() {
+        timer--;
+        view.quizView(timer, quiz[currentQuestion]);
+        if (timer <= 0) {
+            console.log("finish");
+            timer = 0;
+            clearInterval(countDown)
+            view.finishView(currentScore, quiz.length, timer, "");
+            console.log("??");
+        }
+    }, 1000);
+    
 }
 
 function startQuiz1Handler(event) {
+    timer = 201;
     currentQuiz = 0;
     startQuizHandler(quizzes[0]);
 }
 
 function startQuiz2Handler(event) {
+    timer = 201;
     currentQuiz = 1;
     startQuizHandler(quizzes[1]);
 }
 
 function startQuiz3Handler(event) {
+    timer = 301;
     currentQuiz = 2;
     startQuizHandler(quizzes[2]);
 }
 
 function viewHighScoreHandler(event) {
+    clearInterval(countDown);
     orderScore();
     view.highScoreView(scores);
 }
@@ -112,6 +134,11 @@ function clickAnswerHandler(event) {
         // correct answer was selected => increment score
         if (quiz[currentQuestion].correct === target.id) {
             currentScore++;
+        } else {
+            timer -= 10;
+            if (timer <= 0) {
+                timer = 0;
+            }
         }
 
         // next question
@@ -119,9 +146,10 @@ function clickAnswerHandler(event) {
 
         // not a last question
         if (currentQuestion < quiz.length) {
-            view.quizView(300, quiz[currentQuestion]);
+            view.quizView(timer, quiz[currentQuestion]);
         } else {
-            view.finishView(currentScore, "");
+            clearInterval(countDown);
+            view.finishView(currentScore, quiz.length, timer, "");
         }
     }
 }
@@ -131,7 +159,8 @@ function submitScoreHandler(event) {
     
     // no input
     if (!initialInput) {
-        view.finishView(currentScore, "Enter your initial above!");
+        var quizLength = quizzes[currentQuiz].length;
+        view.finishView(currentScore, quizLength, timer, "Enter your initial above!");
         return false;
     }
 
@@ -151,13 +180,13 @@ function submitScoreHandler(event) {
 
 function goBackHandler(event) {
     reset();
-    view.homeView(30);
+    view.homeView();
 }
 
 function clearScoreHandler(event) {
     reset();
     clearScore();
-    view.homeView(30);
+    view.homeView();
 }
 
 function reset() {
